@@ -1,0 +1,76 @@
+# ====================================================================
+# 1. SECURITY & PERSONAL PRIVACY (Crucial to prevent doxxing/leaks)
+# ====================================================================
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.cert
+secrets.json
+credentials.json
+
+# User-specific configuration and personal IDE history
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+.idea/
+*.iws
+
+# ====================================================================
+# 2. BUILD OUTPUTS & BINARIES (Bloat files that don't belong in Git)
+# ====================================================================
+# C++ / C# / .NET build artifacts
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+*.VisualState
+*.pdb
+*.exe
+*.dll
+*.suo
+
+# Frontend / JavaScript build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+
+# ====================================================================
+# 3. DEPENDENCY PACKAGES (Downloadable via package managers)
+# ====================================================================
+node_modules/
+jspm_packages/
+packages/
+!packages/repositories.config
+vendor/
+.venv/
+env/
+ENV/
+lib/
+lib64/
+
+# ====================================================================
+# 4. OS & SYSTEM TRASH (Generated automatically by Windows/Mac)
+# ====================================================================
+# Windows folder metadata
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS folder metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
