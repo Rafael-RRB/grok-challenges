@@ -9,22 +9,21 @@ namespace JokenpoGame
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
-
             Renderer renderer = new Renderer();
 
             // Test Layers
             // Background
             Layer behindLayer = new Layer
             {
-                Content = new string[Console.WindowHeight],
+                Content = new string[renderer.LogicalHeight],
                 Position = Position.Zero,
                 Color = ConsoleColor.White,
                 HorizontalAlign = XAlign.Center,
                 VerticalAlign = YAlign.Middle,
             };
-            for (int y = 0; y < Console.WindowHeight; y++)
+            for (int y = 0; y < renderer.LogicalHeight; y++)
             {
-                behindLayer.Content[y] = new string('X', Console.WindowWidth);
+                behindLayer.Content[y] = new string('X', renderer.LogicalWidth);
             }
             // Overlay Top
             Layer topLayer = new Layer
@@ -37,7 +36,7 @@ namespace JokenpoGame
             };
             for (int y = 0; y < 5; y++)
             {
-                topLayer.Content[y] = new string('X', Console.WindowWidth);
+                topLayer.Content[y] = new string('X', renderer.LogicalWidth);
             }
             // Overlay Middle
             Layer middleLayer = new Layer
@@ -48,7 +47,7 @@ namespace JokenpoGame
                 HorizontalAlign = XAlign.Center,
                 VerticalAlign = YAlign.Middle,
             };
-            for (int y = 0; y < 14; y++)
+            for (int y = 0; y < renderer.LogicalHeight - 10; y++)
             {
                 middleLayer.Content[y] = new string('X', 5);
             }
@@ -63,7 +62,7 @@ namespace JokenpoGame
             };
             for (int y = 0; y < 5; y++)
             {
-                bottomLayer.Content[y] = new string('X', Console.WindowWidth);
+                bottomLayer.Content[y] = new string('X', renderer.LogicalWidth);
             }
 
             renderer.AddLayer(behindLayer);

@@ -7,6 +7,9 @@ namespace JokenpoGame.Render
         // Internal Resolution of the screen
         public int LogicalWidth { get; } = 80;
         public int LogicalHeight { get; } = 24;
+        public int lastTerminalWidth = Console.WindowWidth;
+        public int lastTerminalHeight = Console.WindowHeight;
+        public bool shouldShowCursor = false;
         private readonly List<Layer> _layers = new List<Layer>();
         private char[,] _buffer = new char[0, 0];
         private ConsoleColor[,] _colors = new ConsoleColor[0, 0];
@@ -118,11 +121,19 @@ namespace JokenpoGame.Render
                 int terminalWidth = Console.WindowWidth;
                 int terminalHeight = Console.WindowHeight;
 
+                if (terminalWidth != lastTerminalWidth || terminalHeight != lastTerminalHeight)
+                {
+                    Console.Clear();
+                    Console.CursorVisible = shouldShowCursor;
+                    lastTerminalWidth = terminalWidth;
+                    lastTerminalHeight = terminalHeight;
+                }
+
                 // Error message if the terminal is smaller than the logical resolution
                 if (terminalWidth < LogicalWidth || terminalHeight < LogicalHeight)
                 {
                     // Clear screen and display an error message in the center of the terminal
-                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.White;
                     string message = $"- Please increase Terminal size! Minimum: {LogicalWidth} by {LogicalHeight}. Current size: {terminalWidth} by {terminalHeight} -";
                     int messageX = Math.Max(0, (terminalWidth - message.Length) / 2);
                     int messageY = terminalHeight / 2;
