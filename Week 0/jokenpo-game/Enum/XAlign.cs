@@ -1,4 +1,4 @@
-﻿namespace JokenpoGame.Enum
+﻿namespace JokenpoTerminal.Enum
 {
     public enum XAlign
     {

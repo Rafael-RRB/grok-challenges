@@ -1,7 +1,7 @@
-﻿using JokenpoGame.Enum;
-using JokenpoGame.Structs;
+﻿using JokenpoTerminal.Enum;
+using JokenpoTerminal.Structs;
 
-namespace JokenpoGame.Render
+namespace JokenpoTerminal.Render
 {
     public class Layer
     {

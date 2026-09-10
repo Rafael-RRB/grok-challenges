@@ -1,6 +1,7 @@
-﻿using JokenpoGame.Enum;
+﻿using JokenpoTerminal.Enum;
+using System.Reflection.Emit;
 
-namespace JokenpoGame.Render
+namespace JokenpoTerminal.Render
 {
     public class Renderer
     {

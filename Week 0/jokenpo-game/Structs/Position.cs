@@ -1,4 +1,4 @@
-﻿namespace JokenpoGame.Structs
+﻿namespace JokenpoTerminal.Structs
 {
     public struct Position
     {
@@ -15,7 +15,6 @@
             set { _y = value; }
         }
         public static Position Zero => new Position(0, 0);
-
 
         public Position(int setX, int setY)
         {
