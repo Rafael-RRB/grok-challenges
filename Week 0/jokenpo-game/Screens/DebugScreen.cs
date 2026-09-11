@@ -13,7 +13,7 @@ namespace JokenpoTerminal.Screens
         private Layer topLayer = null!;
         private Layer middleLayer = null!;
         private Layer bottomLayer = null!;
-        private int ocillation = 0;
+        private int direction = 1;
 
         public void Enter()
         {
@@ -72,15 +72,19 @@ namespace JokenpoTerminal.Screens
         }
         public void Update()
         {
-            if (ocillation >= 0)
+            int halfLogicalWidth = renderer.LogicalWidth / 2;
+            int halfLayerWidth = middleLayer.GetWidth() / 2;
+            int maxX = halfLogicalWidth - halfLayerWidth;
+            int minX = -halfLogicalWidth + halfLayerWidth + (middleLayer.GetWidth() % 2);
+
+            middleLayer.Position.X += direction;
+            if (middleLayer.Position.X >= maxX)
             {
-                ocillation++;
-                middleLayer.Position.X = 2;
+                direction = -1;
             }
-            else
+            else if (middleLayer.Position.X <= minX)
             {
-                ocillation--;
-                middleLayer.Position.X = -2;
+                direction = 1;
             }
         }
         public void Draw(Renderer renderer)
@@ -93,7 +97,8 @@ namespace JokenpoTerminal.Screens
 
         public void Exit()
         {
-            ocillation = 0;
+            middleLayer.Position.X = 0;
+            direction = 1;
         }
 
         public DebugScreen(Renderer assignRenderer, Assets assets)

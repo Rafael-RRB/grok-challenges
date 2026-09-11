@@ -1,5 +1,4 @@
 ﻿using JokenpoTerminal.Enum;
-using System.Reflection.Emit;
 
 namespace JokenpoTerminal.Render
 {

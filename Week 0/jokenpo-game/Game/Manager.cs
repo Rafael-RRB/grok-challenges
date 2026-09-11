@@ -15,6 +15,7 @@ namespace JokenpoTerminal.Manager
 
         public void ChangeScreen(IScreen newScreen)
         {
+            currentScreen?.Exit();
             currentScreen = newScreen;
             currentScreen.Enter();
         }
@@ -23,9 +24,11 @@ namespace JokenpoTerminal.Manager
         {            
             currentScreen.Update();
             renderer.ClearLayers();
+            renderer.Clear();
             currentScreen.Draw(renderer);
             renderer.Composite();
             renderer.Present();
+            Thread.Sleep(fps);
         }
 
         public GameManager()
