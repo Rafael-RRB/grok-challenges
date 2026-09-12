@@ -12,11 +12,17 @@ namespace JokenpoTerminal.Game
 
         public Assets()
         {
-            introBGProtagonist = ImageReader.ToASCII("../../../Assets/Background/banner_intro_layer-1.png");
-            introBGStars = ImageReader.ToASCII("../../../Assets/Background/banner_intro_layer-2.png");
-            introBGTriangle = ImageReader.ToASCII("../../../Assets/Background/banner_intro_layer-3.png");
-            introBGSquare = ImageReader.ToASCII("../../../Assets/Background/banner_intro_layer-4.png");
-            introBGCircle = ImageReader.ToASCII("../../../Assets/Background/banner_intro_layer-5.png");
+            string backgroundPath = Path.Combine(
+                AppContext.BaseDirectory,
+                "Assets",
+                "Background"
+            );
+
+            introBGProtagonist = ImageReader.ToASCII(Path.Combine(backgroundPath, "banner_intro_layer-1.png"));
+            introBGStars = ImageReader.ToASCII(Path.Combine(backgroundPath, "banner_intro_layer-2.png"));
+            introBGTriangle = ImageReader.ToASCII(Path.Combine(backgroundPath, "banner_intro_layer-3.png"));
+            introBGSquare = ImageReader.ToASCII(Path.Combine(backgroundPath, "banner_intro_layer-4.png"));
+            introBGCircle = ImageReader.ToASCII(Path.Combine(backgroundPath, "banner_intro_layer-5.png"));
         }
     }
 }
