@@ -1,4 +1,5 @@
 ﻿using JokenpoTerminal.Manager;
+using JokenpoTerminal.Screens;
 
 namespace JokenpoTerminal
 {
@@ -7,7 +8,7 @@ namespace JokenpoTerminal
         static void Main(string[] args)
         {            
             Console.CursorVisible = false;
-            GameManager gameManager = new GameManager();
+            GameManager gameManager = new GameManager(new IntroScreen());
 
             while (gameManager.isRunning)
             {

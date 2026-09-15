@@ -1,21 +1,20 @@
 ﻿using JokenpoTerminal.Enum;
 using JokenpoTerminal.Render;
 using JokenpoTerminal.Structs;
-using JokenpoTerminal.Interfaces;
+using JokenpoTerminal.Screens;
 using JokenpoTerminal.Game;
 
 namespace JokenpoTerminal.Screens
 {
-    public class DebugScreen : IScreen
+    public class DebugScreen : Screen
     {
-        private Renderer renderer = null!;
         private Layer behindLayer = null!;
         private Layer topLayer = null!;
         private Layer middleLayer = null!;
         private Layer bottomLayer = null!;
         private int direction = 1;
 
-        public void Enter()
+        public override void Enter(Renderer renderer, Assets assets)
         {
             // Background
             behindLayer = new Layer
@@ -70,7 +69,7 @@ namespace JokenpoTerminal.Screens
                 bottomLayer.Content[y] = new string('X', renderer.LogicalWidth);
             }
         }
-        public void Update()
+        public override void Update(Renderer renderer, Assets assets, double deltaTime)
         {
             int halfLogicalWidth = renderer.LogicalWidth / 2;
             int halfLayerWidth = middleLayer.GetWidth() / 2;
@@ -87,7 +86,7 @@ namespace JokenpoTerminal.Screens
                 direction = 1;
             }
         }
-        public void Draw(Renderer renderer)
+        public override void Draw(Renderer renderer, Assets assets)
         {
             renderer.AddLayer(behindLayer);
             renderer.AddLayer(topLayer);
@@ -95,15 +94,12 @@ namespace JokenpoTerminal.Screens
             renderer.AddLayer(bottomLayer);
         }
 
-        public void Exit()
+        public override void Exit(Renderer renderer, Assets assets)
         {
             middleLayer.Position.X = 0;
             direction = 1;
         }
 
-        public DebugScreen(Renderer assignRenderer, Assets assets)
-        {
-            renderer = assignRenderer;
-        }
+        public DebugScreen() { }
     }
 }

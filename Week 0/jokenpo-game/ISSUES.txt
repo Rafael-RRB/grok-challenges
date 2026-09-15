@@ -1,4 +1,4 @@
 ﻿##
 ## ISSUES
 ##
-- Offset not being applied to layers?
+- Render draws spaces, hidding layers underneath, but without spaces it draws stuff wrong.

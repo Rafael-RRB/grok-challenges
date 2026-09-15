@@ -105,6 +105,12 @@ namespace JokenpoTerminal.Render
                             continue;
                         }
 
+                        // Skip Spaces
+                        if (line[x] == ' ')
+                        {
+                            continue;
+                        }
+
                         _buffer[finalY, finalX] = line[x];
                         _colors[finalY, finalX] = layer.Color;
                     }

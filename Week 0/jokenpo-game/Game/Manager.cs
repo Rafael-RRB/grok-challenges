@@ -1,42 +1,48 @@
 ﻿using JokenpoTerminal.Render;
-using JokenpoTerminal.Interfaces;
 using JokenpoTerminal.Screens;
 using JokenpoTerminal.Game;
+using System.Diagnostics;
 
 namespace JokenpoTerminal.Manager
 {
     public class GameManager
     {
-        public bool isRunning = true;
-        private static Assets assets = new Assets();
-        private static Renderer renderer = new Renderer();
-        public IScreen currentScreen = null!;
-        public int fps = 1000 / 20; // 20 FPS
+        public bool isRunning { get; private set; } = true;
+        private readonly Stopwatch stopwatch = new Stopwatch();
+        private Assets assets = new Assets();
+        private Renderer renderer = new Renderer();
+        private Screen currentScreen = null!;
+        private double frameDelay = 1.0 / 20.0; // 20 FPS
 
-        public void ChangeScreen(IScreen newScreen)
+        public void ChangeScreen(Screen newScreen)
         {
-            currentScreen?.Exit();
+            currentScreen?.Exit(renderer, assets);
             currentScreen = newScreen;
-            currentScreen.Enter();
+            currentScreen.Enter(renderer, assets);
         }
 
         public void Run()
-        {            
-            currentScreen.Update();
+        {
+            double deltaTime = stopwatch.Elapsed.TotalSeconds;
+            stopwatch.Restart();
+
+            currentScreen.Update(renderer, assets, deltaTime);
             renderer.ClearLayers();
             renderer.Clear();
-            currentScreen.Draw(renderer);
+            currentScreen.Draw(renderer, assets);
             renderer.Composite();
             renderer.Present();
-            Thread.Sleep(fps);
+
+            //Thread.Sleep((int)frameDelay); // Slightly smoother with deltaTime?
+            Thread.Sleep(Math.Max((int)(frameDelay - deltaTime) * 1000, 0));
         }
 
         public GameManager()
         {
-            ChangeScreen(new DebugScreen(renderer, assets));
+            ChangeScreen(new DebugScreen());
         }
 
-        public GameManager(IScreen setCurrentScreen)
+        public GameManager(Screen setCurrentScreen)
         {
             ChangeScreen(setCurrentScreen);
         }
