@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JokenpoTerminal.Utilities
+﻿namespace JokenpoTerminal.Utilities
 {
-    internal class StringExtensions
+    public static class StringExtensions
     {
+        public static string PadCenter(this string text, int totalWidth, char paddingChar = ' ')
+        {
+            if (text == null)
+            {
+                text = string.Empty;
+            }
+
+            if (totalWidth <= text.Length)
+            {
+                return text;
+            }
+
+            int padLeft = ((totalWidth - text.Length) / 2) + text.Length;
+            return text.PadLeft(padLeft, paddingChar).PadRight(totalWidth, paddingChar);
+        }
     }
 }
