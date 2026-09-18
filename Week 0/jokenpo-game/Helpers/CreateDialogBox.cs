@@ -1,4 +1,4 @@
-﻿using JokenpoTerminal.Utilities;
+﻿using StringArrayExtensions;
 
 namespace JokenpoTerminal.Helpers
 {
@@ -22,7 +22,6 @@ namespace JokenpoTerminal.Helpers
             dialogBox[1] = innerBorder;
             dialogBox[dialogBox.Length - 2] = innerBorder;
             dialogBox[dialogBox.Length - 1] = outerBorder;
-
 
             for (int i = 0; i < messages.Length; i++)
             {
