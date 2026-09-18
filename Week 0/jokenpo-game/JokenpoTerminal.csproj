@@ -9,13 +9,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Libraries\ImageToChar\ImageToChar.csproj" />
+		<ProjectReference Include="..\..\Grok Libraries\ImageToChar\ImageToChar.csproj" />
+		<ProjectReference Include="..\..\..\Libraries\CSharp\StringArrayExtensions\StringArrayExtensions.csproj" />
+		<ProjectReference Include="..\..\..\Libraries\CSharp\StringExtensions\StringExtensions.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<None Update="Assets\**\*">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Utilities\" />
 	</ItemGroup>
 
 </Project>
