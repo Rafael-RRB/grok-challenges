@@ -1,4 +1,4 @@
-﻿namespace JokenpoTerminal.Enum
+﻿namespace JokenpoTerminal.Enums
 {
     public enum YAlign
     {

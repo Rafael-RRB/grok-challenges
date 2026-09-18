@@ -1,4 +1,4 @@
-﻿using JokenpoTerminal.Enum;
+﻿using JokenpoTerminal.Enums;
 
 namespace JokenpoTerminal.Render
 {

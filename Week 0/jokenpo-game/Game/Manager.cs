@@ -26,6 +26,12 @@ namespace JokenpoTerminal.Manager
             double deltaTime = stopwatch.Elapsed.TotalSeconds;
             stopwatch.Restart();
 
+            if (Console.KeyAvailable)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                currentScreen.HandleInput(key);
+            }
+
             currentScreen.Update(renderer, assets, deltaTime);
             renderer.ClearLayers();
             renderer.Clear();
@@ -33,7 +39,6 @@ namespace JokenpoTerminal.Manager
             renderer.Composite();
             renderer.Present();
 
-            //Thread.Sleep((int)frameDelay); // Slightly smoother with deltaTime?
             Thread.Sleep(Math.Max((int)(frameDelay - deltaTime) * 1000, 0));
         }
 
