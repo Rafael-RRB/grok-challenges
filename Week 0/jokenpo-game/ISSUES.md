@@ -1,0 +1,4 @@
+﻿##
+## ISSUES
+##
+- [FIXED] ~~Render draws spaces, hidding layers underneath, but without spaces it draws stuff wrong.~~
