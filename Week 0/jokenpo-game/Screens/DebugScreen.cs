@@ -14,7 +14,7 @@ namespace JokenpoTerminal.Screens
         private Layer bottomLayer = null!;
         private int direction = 1;
         private ConsoleColor[] consoleColors = Enum.GetValues<ConsoleColor>();
-        private int colorIndex = 0;
+        private int colorIndex = (int)ConsoleColor.Green;
 
         public override void Enter(Renderer renderer, Assets assets)
         {
