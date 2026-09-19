@@ -1,10 +1,11 @@
 ﻿using StringArrayExtensions;
+using StringExtensions;
 
 namespace JokenpoTerminal.Helpers
 {
     public static class DialogBox
     {
-        public static string[] Create(string[] messages)
+        public static string[] Create(params string[] messages)
         {
             if (messages == null || messages.Length == 0)
             {
@@ -12,9 +13,8 @@ namespace JokenpoTerminal.Helpers
             }
 
             int contentWidth = messages.MaxLength();
-            int totalWidth = contentWidth + 4;
 
-            string outerBorder = new string('#', totalWidth);
+            string outerBorder = new string('#', contentWidth + 2);
             string innerBorder = $"# { new string(' ', contentWidth)} #";
 
             string[] dialogBox = new string[messages.Length + 4];
@@ -25,7 +25,7 @@ namespace JokenpoTerminal.Helpers
 
             for (int i = 0; i < messages.Length; i++)
             {
-                dialogBox[2 + i] = $"# { messages[i]} #";
+                dialogBox[2 + i] = $"# { messages[i].PadCenter(contentWidth) } #";
             }
 
             return dialogBox;
