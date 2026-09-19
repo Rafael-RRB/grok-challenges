@@ -1,4 +1,4 @@
-﻿using JokenpoTerminal.Enum;
+﻿using JokenpoTerminal.Enums;
 using JokenpoTerminal.Render;
 using JokenpoTerminal.Structs;
 using JokenpoTerminal.Game;
@@ -21,8 +21,6 @@ namespace JokenpoTerminal.Screens
         private int triangleDirection = -1;
         private int squareDirection = -1;
         private int circleDirection = 1;
-
-
         public override void Enter(Renderer renderer, Assets assets)
         {
             leftOffset = renderer.LogicalWidth;
@@ -142,6 +140,7 @@ namespace JokenpoTerminal.Screens
                 layer.Position.X = leftOffset;
             }
         }
+
         public override void Draw(Renderer renderer, Assets assets)
         {
             renderer.AddLayer(sparkleLayer);
@@ -150,13 +149,17 @@ namespace JokenpoTerminal.Screens
             renderer.AddLayer(circleLayer);
             renderer.AddLayer(protagonistLayer);
         }
+        public override void HandleInput(ConsoleKeyInfo key)
+        {
+            // TBA
+        }
 
         public override void Exit(Renderer renderer, Assets assets)
         {
             foreach (Layer layer in new Layer[5] { protagonistLayer, sparkleLayer, triangleLayer, squareLayer, circleLayer})
             {
                 layer.Position = Position.Zero;
-            }
+            }   
         }
 
         public IntroScreen() {}

@@ -1,7 +1,7 @@
-﻿using JokenpoTerminal.Enum;
+﻿using System;
+using JokenpoTerminal.Enums;
 using JokenpoTerminal.Render;
 using JokenpoTerminal.Structs;
-using JokenpoTerminal.Screens;
 using JokenpoTerminal.Game;
 
 namespace JokenpoTerminal.Screens
@@ -13,6 +13,8 @@ namespace JokenpoTerminal.Screens
         private Layer middleLayer = null!;
         private Layer bottomLayer = null!;
         private int direction = 1;
+        private ConsoleColor[] consoleColors = Enum.GetValues<ConsoleColor>();
+        private int colorIndex = 0;
 
         public override void Enter(Renderer renderer, Assets assets)
         {
@@ -85,7 +87,11 @@ namespace JokenpoTerminal.Screens
             {
                 direction = 1;
             }
+
+            // Track middle layer color
+            middleLayer.Color = consoleColors[colorIndex];
         }
+
         public override void Draw(Renderer renderer, Assets assets)
         {
             renderer.AddLayer(behindLayer);
@@ -98,6 +104,18 @@ namespace JokenpoTerminal.Screens
         {
             middleLayer.Position.X = 0;
             direction = 1;
+        }
+
+        public override void HandleInput(ConsoleKeyInfo key)
+        {
+            if (key.Key == ConsoleKey.LeftArrow)
+            {
+                colorIndex = (colorIndex - 1 + consoleColors.Length) % consoleColors.Length;
+            }
+            else if (key.Key == ConsoleKey.RightArrow)
+            {
+                colorIndex = (colorIndex + 1) % consoleColors.Length;
+            }
         }
 
         public DebugScreen() { }
