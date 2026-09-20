@@ -14,7 +14,7 @@ namespace JokenpoTerminal.Helpers
 
             int contentWidth = messages.MaxLength();
 
-            string outerBorder = new string('#', contentWidth + 2);
+            string outerBorder = new string('#', contentWidth + 4);
             string innerBorder = $"# { new string(' ', contentWidth)} #";
 
             string[] dialogBox = new string[messages.Length + 4];
