@@ -26,7 +26,8 @@ namespace JokenpoTerminal.Manager
             double deltaTime = stopwatch.Elapsed.TotalSeconds;
             stopwatch.Restart();
 
-            if (Console.KeyAvailable)
+            // Either keep the while or change to if -> while to consume all extra keys
+            while (Console.KeyAvailable)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
                 currentScreen.HandleInput(key);
