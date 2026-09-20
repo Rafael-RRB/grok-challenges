@@ -36,7 +36,7 @@ namespace JokenpoTerminal.Manager
             renderer.ClearLayers();
             renderer.Clear();
             currentScreen.Draw(renderer, assets);
-            renderer.Composite();
+            renderer.Composite('X');
             renderer.Present();
 
             Thread.Sleep(Math.Max((int)(frameDelay - deltaTime) * 1000, 0));
