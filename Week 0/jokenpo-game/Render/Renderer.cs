@@ -52,7 +52,7 @@ namespace JokenpoTerminal.Render
         }
 
         // Composites all layers into the buffer
-        public void Composite()
+        public void Composite(char transparentChar)
         {
             foreach (Layer layer in _layers)
             {
@@ -106,7 +106,7 @@ namespace JokenpoTerminal.Render
                         }
 
                         // Skip Spaces
-                        if (line[x] == ' ')
+                        if (line[x] == transparentChar)
                         {
                             continue;
                         }
