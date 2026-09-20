@@ -5,7 +5,7 @@
 
     public class ImageReader
     {
-        public static string[] ToASCII(string url, char solidChar = '█')
+        public static string[] ToASCII(string url, char solidChar = '█', char transparentChar = ' ')
         {
             // Gets bitmap from the image url
             SKBitmap bitmap = SKBitmap.Decode(url);
@@ -18,11 +18,37 @@
                 {
                     if (bitmap.GetPixel(x, y).Alpha < 10)
                     {
-                        sb.Append(' ');
+                        sb.Append(transparentChar);
                     }
                     else
                     {
                         sb.Append(solidChar);
+                    }
+                }
+                ascii[y] = sb.ToString();
+            }
+
+            return ascii;
+        }
+
+        public static string[] ToASCII(string url, char transparentChar = ' ')
+        {
+            // Gets bitmap from the image url
+            SKBitmap bitmap = SKBitmap.Decode(url);
+            string[] ascii = new string[bitmap.Height];
+
+            for (int y = 0; y < bitmap.Height; y++)
+            {
+                StringBuilder sb = new StringBuilder(bitmap.Width);
+                for (int x = 0; x < bitmap.Width; x++)
+                {
+                    if (bitmap.GetPixel(x, y).Alpha < 10)
+                    {
+                        sb.Append(transparentChar);
+                    }
+                    else
+                    {
+                        sb.Append('█');
                     }
                 }
                 ascii[y] = sb.ToString();
