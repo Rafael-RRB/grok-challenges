@@ -8,7 +8,7 @@ namespace JokenpoTerminal
         static void Main(string[] args)
         {            
             Console.CursorVisible = false;
-            Screen firstScreen = new DebugScreen();
+            Screen firstScreen = new IntroScreen();
             GameManager gameManager = new GameManager(firstScreen);
 
             while (gameManager.isRunning)
