@@ -5,7 +5,8 @@ namespace JokenpoTerminal.Screens
 {
     public abstract class Screen
     {
-        public bool AllowInput { get; protected set; } = true; 
+        protected bool AllowInput { get; set; } = true;
+        public SetScreenChangeHandler RequestScreenChange = null!;
 
         public virtual void Enter(Renderer renderer, Assets assets) { }
 
@@ -16,6 +17,8 @@ namespace JokenpoTerminal.Screens
         public virtual void Exit(Renderer renderer, Assets assets) { }
 
         public virtual void HandleInput(ConsoleKeyInfo key) { }
+
+        public delegate void SetScreenChangeHandler(Screen screen);
 
         public Screen() { }
     }

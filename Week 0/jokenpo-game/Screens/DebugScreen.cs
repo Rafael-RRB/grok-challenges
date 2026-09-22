@@ -1,5 +1,4 @@
-﻿using System;
-using JokenpoTerminal.Enums;
+﻿using JokenpoTerminal.Enums;
 using JokenpoTerminal.Render;
 using JokenpoTerminal.Structs;
 using JokenpoTerminal.Game;
@@ -29,7 +28,7 @@ namespace JokenpoTerminal.Screens
             };
             for (int y = 0; y < renderer.LogicalHeight; y++)
             {
-                behindLayer!.Content[y] = new string('X', renderer.LogicalWidth);
+                behindLayer!.Content[y] = new string('#', renderer.LogicalWidth);
             }
             // Overlay Top
             topLayer = new Layer
@@ -42,7 +41,7 @@ namespace JokenpoTerminal.Screens
             };
             for (int y = 0; y < 5; y++)
             {
-                topLayer.Content[y] = new string('X', renderer.LogicalWidth);
+                topLayer.Content[y] = new string('#', renderer.LogicalWidth);
             }
             // Overlay Middle
             middleLayer = new Layer
@@ -55,7 +54,7 @@ namespace JokenpoTerminal.Screens
             };
             for (int y = 0; y < renderer.LogicalHeight - 10; y++)
             {
-                middleLayer.Content[y] = new string('X', 5);
+                middleLayer.Content[y] = new string('#', 5);
             }
             // Overlay Bottom
             bottomLayer = new Layer
@@ -68,7 +67,7 @@ namespace JokenpoTerminal.Screens
             };
             for (int y = 0; y < 5; y++)
             {
-                bottomLayer.Content[y] = new string('X', renderer.LogicalWidth);
+                bottomLayer.Content[y] = new string('#', renderer.LogicalWidth);
             }
         }
         public override void Update(Renderer renderer, Assets assets, double deltaTime)

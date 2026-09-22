@@ -18,6 +18,7 @@ namespace JokenpoTerminal.Manager
         {
             currentScreen?.Exit(renderer, assets);
             currentScreen = newScreen;
+            currentScreen.RequestScreenChange = ChangeScreen;
             currentScreen.Enter(renderer, assets);
         }
 

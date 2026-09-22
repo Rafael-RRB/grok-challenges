@@ -25,6 +25,7 @@ namespace JokenpoTerminal.Screens
         private int squareDirection = -1;
         private int circleDirection = 1;
         private bool introFinished = false;
+        private bool introWaitFinished = false;
 
         public override void Enter(Renderer renderer, Assets assets)
         {
@@ -164,6 +165,7 @@ namespace JokenpoTerminal.Screens
 
             if (introTimer >= 1)
             {
+                introWaitFinished = true;
                 messageLayer.IsVisible = !messageLayer.IsVisible;
 
                 if (messageLayer.IsVisible)
@@ -197,7 +199,20 @@ namespace JokenpoTerminal.Screens
         }
         public override void HandleInput(ConsoleKeyInfo key)
         {
-            // TBA
+            if (!introFinished)
+            {
+                introFinished = true;
+                leftOffset = 0;
+            }
+            else if (!introWaitFinished)
+            {
+                introWaitFinished = true;
+                introTimer += 1;
+            }
+            else if (introWaitFinished)
+            {
+                RequestScreenChange(new DebugScreen());
+            }
         }
 
         public override void Exit(Renderer renderer, Assets assets)
